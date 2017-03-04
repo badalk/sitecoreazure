@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>787240d7-77d0-44bf-a743-eff56d97ef9d</ProjectGuid>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <SourceWebPhysicalPath>..\Sitecore.ContentModerator</SourceWebPhysicalPath>
+    <SourceWebProject>{ca230643-0647-4632-9604-107043ad8e3d}|Sitecore.ContentModerator\Sitecore.ContentModerator.csproj</SourceWebProject>
+    <SourceWebVirtualPath>/Sitecore.ContentModerator.csproj</SourceWebVirtualPath>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <EnableUpdateable>true</EnableUpdateable>
+    <UseMerge>true</UseMerge>
+    <SingleAssemblyName>TDS.Sitecore.ContentModerator.Core</SingleAssemblyName>
+    <UseWebConfigReplacement>false</UseWebConfigReplacement>
+    <DeleteAppCodeCompiledFiles>true</DeleteAppCodeCompiledFiles>
+    <LegacyFileReplacement>false</LegacyFileReplacement>
+    <AssemblyName>TDS.Sitecore.ContentModerator.Core</AssemblyName>
+    <Name>TDS.Sitecore.ContentModerator.Core</Name>
+    <RootNamespace>TDS.Sitecore.ContentModerator.Core</RootNamespace>
+    <ManageRoles>False</ManageRoles>
+    <SitecoreDatabase>core</SitecoreDatabase>
+    <AssemblyStatus>Exclude</AssemblyStatus>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <RecursiveDeployAction>Ignore</RecursiveDeployAction>
+    <PackageName>TDS.Sitecore.ContentModerator.Core</PackageName>
+    <PackageAuthor />
+    <PackagePublisher />
+    <PackageVersion />
+    <PackageReadme />
+    <SitecoreAssemblyPath>C:\SitecoreWizard\Website\bin</SitecoreAssemblyPath>
+    <GeneratePackage>True</GeneratePackage>
+    <SeperateFilesAndItems>False</SeperateFilesAndItems>
+    <PackageExcludeCode>True</PackageExcludeCode>
+    <AddDateTimeToPackageName>False</AddDateTimeToPackageName>
+    <SitecoreWebUrl>http://sitecorewizard</SitecoreWebUrl>
+    <InstallSitecoreConnector>True</InstallSitecoreConnector>
+    <DisableFileDeployment>False</DisableFileDeployment>
+    <SitecoreDeployFolder>C:\SitecoreWizard\Website</SitecoreDeployFolder>
+    <SitecoreAccessGuid>85dcabf7-34ec-47ea-a93d-9a4ba3206790</SitecoreAccessGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <RecursiveDeployAction>Ignore</RecursiveDeployAction>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>$(AssemblyFileVersion)</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>$(AssemblyVersion)</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sitecore.ContentModerator\Sitecore.ContentModerator.csproj">
+      <Project>{ca230643-0647-4632-9604-107043ad8e3d}</Project>
+      <Name>Sitecore.ContentModerator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
+</Project>
