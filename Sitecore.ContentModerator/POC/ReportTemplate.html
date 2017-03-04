@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>Content Moderation Report: Item XYZ</title>
+    <style>
+	*{font-family:Arial;line-height:20px;resize:none;outline:none;}
+	h1{font-size:30px;color:#fff;text-transform:uppercase;font-weight:300;text-align:center;margin-bottom:15px}
+	h1 span {font-size:12px;text-transform:none;font-weight:bold;}
+	a:link,a:visited,a:hover,a:active{ color: #BB1000; font-size:13px; text-decoration:none;}
+	.moderator-highlight {background-color:#FF8; padding:3px 5px;font-weight:bold;color:#bb1000;-webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);-moz-box-shadow:  1px 1px 3px 0px rgba(0,0,0,0.75);box-shadow:  1px 1px 3px 0px rgba(0,0,0,0.75);cursor:default;}
+	#moderator-button {border:1px solid #d22542; text-transform:uppercase;color:#d22542; background:#FFF; padding:5px 10px; margin-top:-14px;margin-left:10px;font-size:12px;cursor:hand;}
+	.tbl-item {text-align:center;margin:24px 10px 10px;}
+	.tbl-item a {color:#FFF;}
+	table{width:100%;table-layout:fixed}
+	.tbl-header{background-color:rgba(255,255,255,0.3)}
+	.tbl-content{margin-top:0;border:1px solid rgba(255,255,255,0.3)}
+	th{padding:20px 15px;text-align:left;font-weight:bold;font-size:14px;color:#fff;text-transform:uppercase}
+	td{padding:15px;text-align:left;vertical-align:middle;font-weight:300;font-size:14px;color:#fff;border-bottom:solid 1px rgba(255,255,255,0.1); line-height:22px;vertical-align:top;}
+	body{background:-webkit-linear-gradient(left,#d22542,#fab398);background:linear-gradient(to right,#d22542,#fab398);font-family:sans-serif}
+	section{margin:50px}
+	::-webkit-scrollbar{width:10px}
+	::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 10px rgba(0,0,0,0.3)}
+	::-webkit-scrollbar-thumb{-webkit-box-shadow:inset 0 0 10px rgba(0,0,0,0.3)}
+	@media print {
+		#moderator-button { display:none;}
+	}	
+    </style>
+
+    <script>
+        window.console = window.console || function(t) {};
+    </script>
+
+</head>
+
+<body>
+
+    <section>
+        <!--for demo wrap-->
+        <h1>Content Moderation Report <span>for Item XYZ</span></h1>
+        <div class="tbl-item"><button id="moderator-button" onclick="javascript:window.print()">Goto Sitecore Item</button><button id="moderator-button">Moderate</button><button id="moderator-button" onclick="javascript:window.print()">Print</button></div>
+        <div class="tbl-header" style="padding-right: 6px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th width="15%">Field Name</th>
+                        <th width="15%">Field Type</th>
+                        <th>Field Value</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <tr>
+                        <td width="15%">Field 1</td>
+                        <td width="15%">Text</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet odio risus, id semper lectus malesuada ac. Praesent convallis nisl ex, non vestibulum neque rutrum id. Mauris commodo tincidunt porttitor. Curabitur ornare laoreet felis. Etiam quis ligula commodo, mollis metus id, faucibus ipsum. Nulla imperdiet quis ligula et feugiat. Vivamus efficitur ut diam vel placerat. Nullam at tincidunt ex. Nunc vel velit ut enim ornare varius. Quisque at ante et felis ultricies vulputate. <span class="moderator-highlight">Shit</span> phasellus imperdiet aliquam nibh eu sodales. Sed enim odio, hendrerit sed diam nec, vestibulum hendrerit sem.</td>
+                    </tr>
+                    <tr>
+                        <td>Field 2</td>
+                        <td>Text</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet odio risus, id semper lectus <span class="moderator-highlight">ass</span> malesuada ac. Praesent convallis nisl ex, non vestibulum neque rutrum id. Mauris commodo tincidunt porttitor. Curabitur ornare laoreet felis. Etiam quis ligula commodo, mollis metus id, faucibus ipsum. Nulla imperdiet quis ligula et feugiat. Vivamus efficitur ut diam vel placerat. Nullam at tincidunt ex. Nunc vel velit ut enim ornare varius. Quisque at ante et felis ultricies vulputate. <span class="moderator-highlight">Shit</span> phasellus imperdiet aliquam nibh eu sodales. Sed enim odio, hendrerit sed diam nec, vestibulum hendrerit sem.</td>
+                    </tr>
+                    <tr>
+                        <td>Field 3</td>
+                        <td>Text</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="moderator-highlight">Piss</span> nullam imperdiet odio risus, id semper lectus malesuada ac. Praesent convallis nisl ex, non vestibulum neque rutrum id. Mauris commodo tincidunt porttitor. Curabitur ornare laoreet felis. Etiam quis ligula commodo, mollis metus id, faucibus ipsum. Nulla imperdiet quis ligula et feugiat. Vivamus efficitur ut diam vel placerat. Nullam at tincidunt ex. Nunc vel velit ut enim ornare varius. Quisque at ante et felis ultricies vulputate. <span class="moderator-highlight">Shit</span> phasellus imperdiet aliquam nibh eu sodales. Sed enim odio, hendrerit sed diam nec, vestibulum hendrerit sem.</td>
+                    </tr>
+                    <tr>
+                        <td>Field 4</td>
+                        <td>Text</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet odio risus, id semper lectus malesuada ac. Praesent convallis nisl ex, non vestibulum neque rutrum id. Mauris commodo tincidunt porttitor. Curabitur ornare laoreet felis. Etiam quis ligula commodo, mollis metus id, faucibus ipsum. Nulla imperdiet quis ligula et feugiat. Vivamus efficitur ut diam vel placerat. Nullam at tincidunt ex. Nunc vel velit ut enim ornare varius. Quisque at ante et felis ultricies vulputate. <span class="moderator-highlight">Shit</span> phasellus imperdiet aliquam nibh eu sodales. Sed enim odio, hendrerit sed diam nec, vestibulum hendrerit sem.</td>
+                    </tr>
+                    <tr>
+                        <td>Field 5</td>
+                        <td>Text</td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam imperdiet odio risus, id semper lectus malesuada ac. Praesent convallis nisl ex, non vestibulum neque rutrum id. Mauris commodo tincidunt porttitor. Curabitur ornare laoreet felis. Etiam quis ligula commodo, mollis metus id, faucibus ipsum. Nulla imperdiet quis ligula et feugiat. Vivamus efficitur ut diam vel placerat. Nullam at tincidunt ex. Nunc vel velit ut enim ornare varius. Quisque at ante et felis ultricies vulputate. <span class="moderator-highlight">Shit</span> phasellus imperdiet aliquam nibh eu sodales. Sed enim odio, hendrerit sed diam nec, vestibulum hendrerit sem.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    
+
+    <script>
+    </script>
+
+</body>
+</html>
