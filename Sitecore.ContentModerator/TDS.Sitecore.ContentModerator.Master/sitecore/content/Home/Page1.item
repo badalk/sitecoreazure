@@ -1,0 +1,103 @@
+----item----
+version: 1
+id: {E52BFC14-8907-4EF7-8929-D6247BA777CE}
+database: master
+path: /sitecore/content/Home/Page1
+parent: {110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9}
+name: Page1
+master: {00000000-0000-0000-0000-000000000000}
+template: {1AB389D0-1212-472B-B829-FE973B715B37}
+templatekey: Page
+created: 20170304T063459Z
+
+----version----
+language: en
+version: 1
+revision: fef8d5ba-4738-4314-9e23-dfd6c9ac5673
+
+----field----
+field: {C51330AA-CE4D-4922-B62A-88118A0D7E6D}
+name: Title
+key: title
+content-length: 25
+
+That's an awesome island!
+----field----
+field: {10508E3F-5AB3-4B97-B91E-AA8DB1CB62B0}
+name: Description
+key: description
+content-length: 1391
+
+<p style="color: #000000; background-color: #ffffff; margin: 1.55556em 20.6563px 0px 82.6563px; padding-right: 8px; padding-left: 8px; letter-spacing: -0.1px;">We first heard about Ben and Lisa Newton from a fellow sailor in Tahiti. &ldquo;Look them up when you get to Tonga,&rdquo; she said. &ldquo;The dance parties on their island are epic.&rdquo;</p>
+<p style="color: #000000; background-color: #ffffff; margin: 1.55556em 20.6563px 0px 82.6563px; padding-right: 8px; padding-left: 8px; letter-spacing: -0.1px;">She told us that Ben and Lisa were building an eco-resort in Vava&rsquo;u, one of four states within the Kingdom of Tonga, and might be looking for seasonal help. Rob and I had been hitching rides on sailboats across the Pacific. After 11,000km of ocean passages, we were both ready to find a place to steady our sea legs.</p>
+<p style="color: #000000; background-color: #ffffff; margin-top: 1.55556em; margin-right: 20.6563px; margin-left: 82.6563px; padding-right: 8px; padding-left: 8px; letter-spacing: -0.1px;">Dancing was my favourite hobby, right up there with exploring remote Pacific islands. I Googled&nbsp;<a href="http://www.mandalaisland.com/" style="color: #589e50; background: transparent;">&lsquo;Mandala Resort&rsquo;</a>&nbsp;and sent Ben and Lisa a message through their website: &lsquo;Would love to work in exchange for a place to pitch a tent&rsquo;.</p>
+----field----
+field: {E3CC14CA-EEFC-4303-AAE2-A58F328968C3}
+name: Teaser
+key: teaser
+content-length: 271
+
+<span style="background-color: #ffffff; letter-spacing: -0.1px; color: #000000;"><em><strong>When Ben and Lisa Newton sold their businesses and homes to sail through the South Pacific, they never expected to own one of the islands they dreamed about.</strong></em></span>
+----field----
+field: {ED74266A-CAA2-4B84-8392-E1352D71F7F9}
+name: Date
+key: date
+content-length: 16
+
+20170301T064100Z
+----field----
+field: {5F8F283A-6899-4561-8E40-6979D8A31C53}
+name: Preview
+key: preview
+content-length: 58
+
+<image mediaid="{53D07ED3-C683-4278-9257-DF9418020D31}" />
+----field----
+field: {0286AA39-4A2F-4C8D-BB2F-A44EC597E88E}
+name: MainImage
+key: mainimage
+content-length: 58
+
+<image mediaid="{7F4A3D46-86B8-4095-B886-0504D74E58ED}" />
+----field----
+field: {52807595-0F8F-4B20-8D2A-CB71D28C6103}
+name: __Owner
+key: __owner
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {25BED78C-4957-4165-998A-CA1B52F67497}
+name: __Created
+key: __created
+content-length: 16
+
+20170304T063459Z
+----field----
+field: {5DD74568-4D4B-44C1-B513-0AF5F4CDA34F}
+name: __Created by
+key: __created by
+content-length: 14
+
+sitecore\Admin
+----field----
+field: {8CDC337E-A112-42FB-BBB4-4143751E123F}
+name: __Revision
+key: __revision
+content-length: 36
+
+fef8d5ba-4738-4314-9e23-dfd6c9ac5673
+----field----
+field: {D9CF14B1-FA16-4BA6-9288-E8A174D4D522}
+name: __Updated
+key: __updated
+content-length: 16
+
+20170304T064417Z
+----field----
+field: {BADD9CF9-53E0-4D0C-BCC0-2D784C282F6A}
+name: __Updated by
+key: __updated by
+content-length: 14
+
+sitecore\Admin
