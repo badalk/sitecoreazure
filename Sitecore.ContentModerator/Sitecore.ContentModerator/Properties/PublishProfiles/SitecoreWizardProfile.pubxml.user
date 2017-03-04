@@ -9,8 +9,119 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>C:\SitecoreWizard\Website</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="Admin/ContentModerator.aspx">
+      <publishTime>03/04/2017 11:42:52</publishTime>
+    </File>
+    <File Include="App_Config/Include/Sitecore.ContentModerator.config">
+      <publishTime>03/04/2017 10:24:48</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>12/21/2016 11:04:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>03/04/2017 10:28:59</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CognitiveServices.ContentModerator.dll">
+      <publishTime>03/04/2017 09:46:27</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CognitiveServices.ContentModerator.pdb">
+      <publishTime>03/04/2017 09:46:27</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>03/04/2017 10:29:01</publishTime>
+    </File>
+    <File Include="bin/Sitecore.ContentModerator.dll">
+      <publishTime>03/04/2017 11:43:11</publishTime>
+    </File>
+    <File Include="bin/Sitecore.ContentModerator.pdb">
+      <publishTime>03/04/2017 11:43:11</publishTime>
+    </File>
+    <File Include="bin/Sitecore.Kernel.dll">
+      <publishTime>12/21/2016 12:35:44</publishTime>
+    </File>
+    <File Include="bin/Sitecore.Logging.dll">
+      <publishTime>12/21/2016 12:35:48</publishTime>
+    </File>
+    <File Include="bin/Sitecore.Services.Infrastructure.dll">
+      <publishTime>12/21/2016 12:35:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>03/04/2017 10:28:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>03/04/2017 10:28:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>03/04/2017 10:28:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>03/04/2017 10:28:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>03/04/2017 10:28:58</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>03/04/2017 10:28:58</publishTime>
+    </File>
     <File Include="Controllers/SitecoreImageModeratorController.cs">
       <publishTime>03/04/2017 10:17:32</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>03/04/2017 09:46:27</publishTime>
+    </File>
+    <File Include="Lib/HtmlAgilityPack.dll">
+      <publishTime>12/21/2016 11:04:14</publishTime>
+    </File>
+    <File Include="Lib/Microsoft.CognitiveServices.ContentModerator.dll">
+      <publishTime>03/04/2017 09:46:27</publishTime>
+    </File>
+    <File Include="Lib/Sitecore.Kernel.dll">
+      <publishTime>12/21/2016 12:35:44</publishTime>
+    </File>
+    <File Include="Lib/Sitecore.Logging.dll">
+      <publishTime>12/21/2016 12:35:48</publishTime>
+    </File>
+    <File Include="Lib/Sitecore.Services.Infrastructure.dll">
+      <publishTime>12/21/2016 12:35:58</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>03/04/2017 09:46:27</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>03/04/2017 09:46:27</publishTime>
     </File>
   </ItemGroup>
 </Project>
