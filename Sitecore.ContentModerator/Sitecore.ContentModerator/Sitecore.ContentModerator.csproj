@@ -161,6 +161,7 @@
     <Content Include="Lib\Sitecore.Logging.dll" />
     <Content Include="Lib\Sitecore.Services.Core.dll" />
     <Content Include="Lib\Sitecore.Services.Infrastructure.dll" />
+    <Content Include="Lib\System.Web.Http.dll" />
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="App_Config\Include\Sitecore.ContentModerator.config" />
