@@ -34,11 +34,6 @@ namespace ContentModeratorAPI
         private const string SUBSCRIPTIONKEY = "285428d0a06d4a668c82b5b25cf5dc7e";
 
         /// <summary>
-        /// Placeholder to store the data
-        /// </summary>
-        private const string DATACLASSPLACEHOLDER = "data-cls";
-
-        /// <summary>
         /// Initiator Method
         /// </summary>
         static void Main()
