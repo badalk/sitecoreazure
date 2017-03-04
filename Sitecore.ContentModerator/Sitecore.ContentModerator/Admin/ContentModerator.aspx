@@ -58,7 +58,7 @@
                 <asp:Label ID="itemPathlbl" runat="server"></asp:Label>
             </div>
             <div class="right">
-                <button id="startModeration" title="Start Moderation" value="Moderate"></button>
+                <button id="startModeration" title="Start Moderation" type="button" value="Moderate">Start Moderation</button>
             </div>
             <asp:Repeater ID="fieldRepeater" runat="server">
                 <HeaderTemplate>
