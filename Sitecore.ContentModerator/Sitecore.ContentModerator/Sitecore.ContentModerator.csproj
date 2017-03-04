@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>Lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -54,10 +57,13 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Sitecore.Kernel">
-      <HintPath>..\..\..\SitecoreWizard\Website\bin\Sitecore.Kernel.dll</HintPath>
+      <HintPath>Lib\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Logging">
-      <HintPath>..\..\..\SitecoreWizard\Website\bin\Sitecore.Logging.dll</HintPath>
+      <HintPath>Lib\Sitecore.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Services.Infrastructure">
+      <HintPath>Lib\Sitecore.Services.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -100,21 +106,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\ContentModerator.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Lib\HtmlAgilityPack.dll" />
     <Content Include="Lib\Microsoft.CognitiveServices.ContentModerator.dll" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\ContentModerator.aspx.cs">
+      <DependentUpon>ContentModerator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ContentModerator.aspx.designer.cs">
+      <DependentUpon>ContentModerator.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\SitecoreImageModeratorController.cs" />
     <Compile Include="Controllers\SitecoreTextModeratorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Entities\ItemData.cs" />
+    <Compile Include="Helpers\Extensions\SitecoreExtensions.cs" />
+    <Compile Include="Helpers\Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\ModerateCommand.cs" />
+    <Compile Include="Helpers\SitecoreHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lib\Sitecore.Kernel.dll" />
+    <Content Include="Lib\Sitecore.Logging.dll" />
+    <Content Include="Lib\Sitecore.Services.Infrastructure.dll" />
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="App_Config\Include\Sitecore.ContentModerator.config" />
@@ -127,7 +149,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\SitecoreImageModerator\" />

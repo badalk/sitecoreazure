@@ -1,7 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System;
+using Sitecore.Diagnostics;
+using Sitecore.Resources;
+using Sitecore.Shell.Framework.Commands;
+using Sitecore.Text;
+using Sitecore.Web;
+using Sitecore.Web.UI.Framework.Scripts;
+using Sitecore.Web.UI.Sheer;
+using Sitecore.Web.UI.XamlSharp.Continuations;
 
 namespace Sitecore.ContentModerator.Helpers
 {
