@@ -110,6 +110,7 @@
     <Content Include="Global.asax" />
     <Content Include="Lib\HtmlAgilityPack.dll" />
     <Content Include="Lib\Microsoft.CognitiveServices.ContentModerator.dll" />
+    <None Include="Properties\PublishProfiles\PKProfile.pubxml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
