@@ -19,9 +19,9 @@ namespace Sitecore.ContentModerator.Admin
 
             var currentItem = SitecoreHelpers.GetItemById(itemId);
 
-            itemIdlbl.Text = itemId;
+            //itemIdlbl.Text = itemId;
             itemNamelbl.Text = currentItem.Name;
-            itemPathlbl.Text = currentItem.Paths.Path;
+            //itemPathlbl.Text = currentItem.Paths.Path;
 
             var repeaterData = new List<ItemData>();
 
@@ -31,16 +31,16 @@ namespace Sitecore.ContentModerator.Admin
                 switch (field.GetFieldType())
                 {
                     case FieldTypes.TextField:
-                        repeaterData.Add(new ItemData { Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = field.Value, NonHtmlValue = field.Value });
+                        repeaterData.Add(new ItemData { FieldName=field.Name, ItemId=field.Item.ID.ToString(), IsImage=false,  Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = field.Value, NonHtmlValue = field.Value });
                         break;
                     case FieldTypes.Image:
-                        repeaterData.Add(new ItemData { Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = String.Format("<img src=\"{0}\"/>", SitecoreHelpers.GetImageLink(currentItem, field.Name)), NonHtmlValue = SitecoreHelpers.GetImageLink(currentItem, field.Name) });
+                        repeaterData.Add(new ItemData { FieldName = field.Name, ItemId = field.Item.ID.ToString(), IsImage = true, Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = String.Format("<img src=\"{0}\"/>", SitecoreHelpers.GetImageLink(currentItem, field.Name)), NonHtmlValue = SitecoreHelpers.GetImageLink(currentItem, field.Name) });
                         break;
                     case FieldTypes.HTMLField:
-                        repeaterData.Add(new ItemData { Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = field.Value, NonHtmlValue = field.Value.StripHtml() });
+                        repeaterData.Add(new ItemData { FieldName = field.Name, ItemId = field.Item.ID.ToString(), IsImage = false, Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = field.Value, NonHtmlValue = field.Value.StripHtml() });
                         break;
                     default:
-                        repeaterData.Add(new ItemData { Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = field.Value, NonHtmlValue = field.Value.StripHtml() });
+                        repeaterData.Add(new ItemData { FieldName = field.Name, ItemId = field.Item.ID.ToString(), IsImage = false, Name = field.Name, DisplayName = field.DisplayName, Type = field.Type, Value = field.Value, NonHtmlValue = field.Value.StripHtml() });
                         break;
                 };
             }
