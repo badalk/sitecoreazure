@@ -33,11 +33,10 @@ namespace Sitecore.ContentModerator.Processors
         protected void Configure(HttpConfiguration configuration)
         {
             var routes = configuration.Routes;
-            routes.MapHttpRoute("ModerationAPI", "sitecore/api/moderate/{controller}/{action}/{id}", new
+            routes.MapHttpRoute("ModerationAPI", "sitecore/api/moderate/{controller}/{action}", new
             {
                 controller = "moderation",
-                action = "start",
-                id = RouteParameter.Optional
+                action = "start"                
             });
         }
     }

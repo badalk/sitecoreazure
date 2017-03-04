@@ -145,11 +145,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Entities\ItemData.cs" />
+    <Compile Include="Helpers\Entities\ModeratorApiImageModel.cs" />
+    <Compile Include="Helpers\Entities\ModeratorApiTextModel.cs" />
     <Compile Include="Helpers\Entities\ModeratorEntity.cs" />
     <Compile Include="Helpers\Extensions\SitecoreExtensions.cs" />
     <Compile Include="Helpers\Extensions\StringExtensions.cs" />
     <Compile Include="Helpers\ModerateCommand.cs" />
     <Compile Include="Helpers\SitecoreHelpers.cs" />
+    <Compile Include="Helpers\Utilities\ContentModeratorApiHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

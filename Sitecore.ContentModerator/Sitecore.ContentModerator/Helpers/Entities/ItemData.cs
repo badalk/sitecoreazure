@@ -20,5 +20,5 @@ namespace Sitecore.ContentModerator.Helpers.Entities
         LookUpField = 2,
         MultilistField = 3,
         Image = 4
-    }
+    }   
 }

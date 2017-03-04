@@ -1,8 +1,10 @@
-﻿using Sitecore.ContentModerator.Helpers;
+﻿using Newtonsoft.Json;
+using Sitecore.ContentModerator.Helpers;
 using Sitecore.ContentModerator.Helpers.Entities;
 using Sitecore.ContentModerator.Helpers.Extensions;
 using Sitecore.Services.Infrastructure.Web.Http;
-using System.Web.Mvc;
+//using System.Web.Mvc;
+using System.Web.Http;
 
 namespace Sitecore.ContentModerator.Controllers
 {
@@ -17,18 +19,20 @@ namespace Sitecore.ContentModerator.Controllers
             ModeratorSettings = new ModeratorEntity() { API="", Lang="eng", Secret="" };
         }
 
-        [HttpPost]
-        public object Start(string itemId, string fieldName, string isImage)
+        [HttpPost]        
+        public bool Start([FromBody]ItemData itemData)
         {
-            var item = SitecoreHelpers.GetItemById(itemId);
+            //var itemData = JsonConvert.DeserializeObject<ItemData>(itemInfo);
 
-            if (isImage.ToBoolean())
+            var item = SitecoreHelpers.GetItemById(itemData.ItemId);
+
+            if (itemData.IsImage)
             {
-                var imgStream = SitecoreHelpers.GetImageStream(item, fieldName);
+                var imgStream = SitecoreHelpers.GetImageStream(item, itemData.FieldName);
             }
             else
             {
-                var text = item.Fields[fieldName].Value.StripHtml();
+                var text = item.Fields[itemData.FieldName].Value.StripHtml();
             }
 
             return true;

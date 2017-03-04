@@ -192,11 +192,13 @@
         $j(document).ready(function () {
             $j('#startModeration').click(function () {
                 $j('.itemRows').each(function (x, y) {
-                    var postData = { itemId: $j(this).find('.itemId').text(), fieldName: $j(this).find('.fieldName').text(), isImage: $j(this).find('.isImg').text() };
+                    var postData = { "ItemId": $j(this).find('.itemId').text(), "FieldName": $j(this).find('.fieldName').text(), "IsImage": $j(this).find('.isImg').text() };
                     $j.ajax({
                         type: "POST",
                         url: "/sitecore/api/moderate/moderation/start",
-                        data: postData,
+                        data: JSON.stringify(postData),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
                         success: function (data, status) {
                             //append status in the page
                         },
@@ -205,6 +207,7 @@
                         }
                     });
                 })
+                return false;
             });
         });
     </script>
