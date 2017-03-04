@@ -12,6 +12,7 @@ using Microsoft.CognitiveServices.ContentModerator.Contract;
 using ImageContract = Microsoft.CognitiveServices.ContentModerator.Contract.Image;
 using TextContract = Microsoft.CognitiveServices.ContentModerator.Contract.Text;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 #endregion
 
@@ -23,9 +24,14 @@ namespace ContentModeratorAPI
     static class Program
     {
         /// <summary>
+        /// Character limit before which the API throws an error
+        /// </summary>
+        private const int APICHARACTERLIMIT = 1024;
+
+        /// <summary>
         /// Subscription Constant to default to
         /// </summary>
-        private const string subscriptionKey = "285428d0a06d4a668c82b5b25cf5dc7e";
+        private const string SUBSCRIPTIONKEY = "285428d0a06d4a668c82b5b25cf5dc7e";
 
         /// <summary>
         /// Initiator Method
@@ -33,8 +39,9 @@ namespace ContentModeratorAPI
         static void Main()
         {
             // Setting the input values for invoking the Text Moderation method
-            ModeratorApiTextModel moderationTextApiInput = new ModeratorApiTextModel() {
-                textToScreen = "Testing WTF!! Shit Piss Off Ass",
+            ModeratorApiTextModel moderationTextApiInput = new ModeratorApiTextModel()
+            {
+                textToScreen = "Testing WTF!! Shit Piss Off Ass Lorem Ipsum dolor shit amet consectur.",
                 contentType = (Constants.MediaType)Enum.Parse(typeof(Constants.MediaType), "Plain"),
                 language = "eng",
                 autoCorrect = true,
@@ -51,7 +58,7 @@ namespace ContentModeratorAPI
             {
                 imageType = ImageType.Url,
                 cacheImage = false,
-                content = @"http://www.oddee.com/_media/imgs/articles2/a97756_g268_3-sexist.jpg",                
+                content = @"http://www.oddee.com/_media/imgs/articles2/a97756_g268_3-sexist.jpg",
                 contentType = (ImageContract.DataRepresentationType)Enum.Parse(typeof(ImageContract.DataRepresentationType), "Url")
             };
 
@@ -75,27 +82,43 @@ namespace ContentModeratorAPI
         /// <returns>Moderated string with the inappropriate words highlighted</returns>
         static async Task<String> ModerateText(ModeratorApiTextModel moderationTextApiInput)
         {
-            string responseText = moderationTextApiInput.textToScreen;
-            string wrapTemplate = "<span data-cls='moderator-highlight'>{0}</span>";
-            Dictionary<int, string> convertedItem = new Dictionary<int, string>();
+            var inputText = moderationTextApiInput.textToScreen;
+            var responseText = string.Empty;
+            var wrapTemplate = "<span data-class='moderator-highlight'>{0}</span>";
+            var chrCount = 0;
+            List<string> convertedItem = new List<string>();
 
             // Invoke the Moderation Client API
-            ModeratorClient moderatorClient = new ModeratorClient(subscriptionKey);
-            var matchAfterDeleteRes = await moderatorClient.ScreenTextAsync(moderationTextApiInput.textToScreen, moderationTextApiInput.contentType, moderationTextApiInput.language, moderationTextApiInput.autoCorrect, moderationTextApiInput.identifyUrls, moderationTextApiInput.detectPii, moderationTextApiInput.listId);
-            
-            // Analyze the reponse object for inappropriate content
-            foreach (TextContract.MatchTerm item in ((TextContract.ScreenTextResult)matchAfterDeleteRes).Terms)
-            {
-                // Process the current inappropriate content, if not already processed
-                if (!convertedItem.ContainsKey(item.Index))
-                {
-                    // Keep Track of the inappropriate word
-                    convertedItem.Add(item.Index, item.Term);
+            ModeratorClient moderatorClient = new ModeratorClient(SUBSCRIPTIONKEY);
 
-                    // Wrap it with a span tag and class to highlight it
-                    //textToScreen = textToScreen.Replace(item.Term, string.Format(wrapTemplate, item.Term));
-                    responseText = Regex.Replace(responseText, item.Term, string.Format(wrapTemplate, item.Term), RegexOptions.Multiline | RegexOptions.IgnoreCase);
+            // Split the job into batches of character limit
+            var lines = inputText.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                                .GroupBy(w => (chrCount += w.Length + 1) / APICHARACTERLIMIT)
+                                .Select(g => string.Join(" ", g));
+
+            // Perform the text operation based on the character limit the API supports
+            foreach (var line in lines)
+            {
+                var splitText = line;
+                var moderatedTextResponse = await moderatorClient.ScreenTextAsync(splitText, moderationTextApiInput.contentType, moderationTextApiInput.language, moderationTextApiInput.autoCorrect, moderationTextApiInput.identifyUrls, moderationTextApiInput.detectPii, moderationTextApiInput.listId);
+
+                // Analyze the reponse object for inappropriate content
+                foreach (TextContract.MatchTerm item in ((TextContract.ScreenTextResult)moderatedTextResponse).Terms)
+                {
+                    // Process the current inappropriate content, if not already processed
+                    if (!convertedItem.Contains(item.Term))
+                    {
+                        // Keep Track of the inappropriate word
+                        convertedItem.Add(item.Term);
+
+                        // Wrap it with a span tag and class to highlight it
+                        //textToScreen = textToScreen.Replace(item.Term, string.Format(wrapTemplate, item.Term));
+                        splitText = Regex.Replace(splitText, item.Term, string.Format(wrapTemplate, item.Term), RegexOptions.Multiline | RegexOptions.IgnoreCase);
+                    }
                 }
+
+                // Merge the moderated text back into the final response
+                responseText += splitText;
             }
 
             // Return the final response with the inappropriate words highlighted
@@ -118,8 +141,8 @@ namespace ContentModeratorAPI
             bool responseStatus = false;
 
             // Invoke the Moderation Client API
-            ModeratorClient moderatorClient = new ModeratorClient(subscriptionKey);
-            var matchAfterDeleteRes = await moderatorClient.EvaluateImageAsync(moderationImageApiInput.content, ImageContract.DataRepresentationType.Url,moderationImageApiInput.cacheImage);
+            ModeratorClient moderatorClient = new ModeratorClient(SUBSCRIPTIONKEY);
+            var matchAfterDeleteRes = await moderatorClient.EvaluateImageAsync(moderationImageApiInput.content, ImageContract.DataRepresentationType.Url, moderationImageApiInput.cacheImage);
 
             // Analyze the reponse object for inappropriate content
             responseStatus = ((ImageContract.EvaluateImageResult)matchAfterDeleteRes).IsImageAdultClassified || ((ImageContract.EvaluateImageResult)matchAfterDeleteRes).IsImageRacyClassified;
@@ -127,5 +150,5 @@ namespace ContentModeratorAPI
             // Return the status as inappropriate image
             return responseStatus;
         }
-    }    
+    }
 }
