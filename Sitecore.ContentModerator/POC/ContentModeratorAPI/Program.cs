@@ -14,6 +14,7 @@ using TextContract = Microsoft.CognitiveServices.ContentModerator.Contract.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.IO;
 #endregion
 
 namespace ContentModeratorAPI
@@ -38,35 +39,46 @@ namespace ContentModeratorAPI
         /// </summary>
         static void Main()
         {
-            // Setting the input values for invoking the Text Moderation method
-            ModeratorApiTextModel moderationTextApiInput = new ModeratorApiTextModel()
-            {
-                textToScreen = "Testing WTF!! Shit Piss Off Ass Lorem Ipsum dolor shit amet consectur.",
-                contentType = (Constants.MediaType)Enum.Parse(typeof(Constants.MediaType), "Plain"),
-                language = "eng",
-                autoCorrect = true,
-                identifyUrls = true,
-                detectPii = true,
-                listId = "class"
-            };
+            //// Setting the input values for invoking the Text Moderation method
+            //ModeratorApiTextModel moderationTextApiInput = new ModeratorApiTextModel()
+            //{
+            //    textToScreen = "Testing WTF!! Shit Piss Off Ass Lorem Ipsum dolor shit amet consectur.",
+            //    contentType = (Constants.MediaType)Enum.Parse(typeof(Constants.MediaType), "Plain"),
+            //    language = "eng",
+            //    autoCorrect = true,
+            //    identifyUrls = true,
+            //    detectPii = true,
+            //    listId = "class"
+            //};
 
             // Invoke the ModerateText method passing the required inputs for a text
-            ModerateText(moderationTextApiInput);
+            //ModerateText(moderationTextApiInput);
 
             // Setting the input values for invoking the Image Moderation method
-            ModeratorApiImageModel moderationImageApiInput = new ModeratorApiImageModel()
-            {
-                imageType = ImageType.Url,
-                cacheImage = false,
-                content = @"http://www.oddee.com/_media/imgs/articles2/a97756_g268_3-sexist.jpg",
-                contentType = (ImageContract.DataRepresentationType)Enum.Parse(typeof(ImageContract.DataRepresentationType), "Url")
-            };
+            //ModeratorApiImageModel moderationImageApiInput = new ModeratorApiImageModel()
+            //{
+            //    imageType = ImageType.Url,
+            //    cacheImage = false,
+            //    content = @"http://www.oddee.com/_media/imgs/articles2/a97756_g268_3-sexist.jpg",
+            //    contentType = (ImageContract.DataRepresentationType)Enum.Parse(typeof(ImageContract.DataRepresentationType), "Url")
+            //};
 
             // Invoke the ModerateImage method passing the required inputs for an image
-            ModerateImage(moderationImageApiInput);
 
+            var fs = File.OpenRead(@"C:\Users\M1000700\Downloads\images-to-test-apis\adultery.jpg");
+            var imageEvaluationResult = GetImageEvaluationResult(fs, true);
+            while(!imageEvaluationResult.IsCompleted)
+            {
+
+            }
+            Console.WriteLine(imageEvaluationResult);
             // Await operation
             Console.ReadLine();
+        }
+        private static async Task GetImageEvaluationResult(Stream stream, Boolean cache)
+        {
+            ModeratorClient client = new ModeratorClient(SUBSCRIPTIONKEY);
+            var imageEvaluationResult = await client.EvaluateImageAsync(stream, false);
         }
 
         /// <summary>
