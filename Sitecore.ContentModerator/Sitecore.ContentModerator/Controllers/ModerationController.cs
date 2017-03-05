@@ -2,8 +2,12 @@
 using Sitecore.ContentModerator.Helpers.Entities;
 using Sitecore.ContentModerator.Helpers.Extensions;
 using Sitecore.Services.Infrastructure.Web.Http;
+using CMConstants = Microsoft.CognitiveServices.ContentModerator.Constants;
+using Microsoft.CognitiveServices.ContentModerator; 
 //using System.Web.Mvc;
 using System.Web.Http;
+using System;
+using System.Threading.Tasks;
 
 namespace Sitecore.ContentModerator.Controllers
 {
@@ -19,8 +23,9 @@ namespace Sitecore.ContentModerator.Controllers
         }
 
         [HttpPost]        
-        public bool Start([FromBody]ItemData itemData)
+        public string Start([FromBody]ItemData itemData)
         {
+            string moderatedOutput = "";
             var item = SitecoreHelpers.GetItemById(itemData.ItemId);
 
             if (itemData.IsImage)
@@ -30,9 +35,25 @@ namespace Sitecore.ContentModerator.Controllers
             else
             {
                 var text = item.Fields[itemData.FieldName].Value.StripHtml();
-            }
+                var mod = new ModeratorApiTextModel()
+                {
+                    autoCorrect = true,
+                    contentType = (CMConstants.MediaType)Enum.Parse(typeof(CMConstants.MediaType), "Plain"),
+                    language = "eng",
+                    detectPii = true,
+                    textToScreen = text
+                };
 
-            return true;
+               var tempmoderatedOutput = GetModeratedOutput(mod);
+               Task.WaitAll(tempmoderatedOutput);
+               moderatedOutput = tempmoderatedOutput.Result;
+            }
+            return moderatedOutput;
+        }
+
+        async Task<string> GetModeratedOutput(ModeratorApiTextModel toModerate)
+        {
+            return await Helpers.Utilities.ContentModeratorApiHelper.ModerateText(toModerate);
         }
         
 	}

@@ -40,7 +40,7 @@ namespace Sitecore.ContentModerator.Helpers.Utilities
         /// <param name="detectPii">Detect Personal Identifiable Information on the text moderation</param>
         /// <param name="listId">ListId for the Content Moderation API</param>
         /// <returns>Moderated string with the inappropriate words highlighted</returns>
-        static async Task<String> ModerateText(ModeratorApiTextModel moderationTextApiInput)
+        public static async Task<String> ModerateText(ModeratorApiTextModel moderationTextApiInput)
         {
             var inputText = moderationTextApiInput.textToScreen;
             var responseText = string.Empty;
@@ -96,7 +96,7 @@ namespace Sitecore.ContentModerator.Helpers.Utilities
         /// <param name="detectPii">Detect Personal Identifiable Information on the text moderation</param>
         /// <param name="listId">ListId for the Content Moderation API</param>
         /// <returns>Moderated string with the inappropriate words highlighted</returns>
-        static async Task<ImageContract.EvaluateImageResult> ModerateImage(ModeratorApiImageModel moderationImageApiInput)
+        public static async Task<ImageContract.EvaluateImageResult> ModerateImage(ModeratorApiImageModel moderationImageApiInput)
         {
             // Invoke the Moderation Client API
             ModeratorClient moderatorClient = new ModeratorClient(SUBSCRIPTIONKEY);
