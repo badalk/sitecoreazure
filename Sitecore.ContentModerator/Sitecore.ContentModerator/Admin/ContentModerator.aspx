@@ -8,89 +8,206 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-    <style type="text/css">
-        .fldtbl {
-            width: 100%;
-            display: table;
-            border-collapse: collapse;
+    <style>
+        * {
+            font-family: Arial;
+            line-height: 20px;
+            resize: none;
+            outline: none;
         }
 
-            .fldtbl th, .fldtbl td {
-                border: 1px solid #DDD;
-                text-align: left;
-                padding: 10px;
+        h1 {
+            font-size: 30px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+            h1 span {
+                font-size: 12px;
+                text-transform: none;
+                font-weight: bold;
             }
 
-        .td1 {
-            width: 10%;
+        a:link, a:visited, a:hover, a:active {
+            color: #BB1000;
+            font-size: 13px;
+            text-decoration: none;
         }
 
-        .td2 {
-            width: 5%;
+        .moderator-highlight {
+            background-color: #FF8;
+            padding: 3px 5px;
+            font-weight: bold;
+            color: #bb1000;
+            -webkit-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+            box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75);
+            cursor: default;
         }
 
-        .td3 {
-            width: 35%;
+        #moderator-button {
+            border: 1px solid #d22542;
+            text-transform: uppercase;
+            color: #d22542;
+            background: #FFF;
+            padding: 5px 10px;
+            margin-top: -14px;
+            margin-left: 10px;
+            font-size: 12px;
+            cursor: hand;
         }
 
-        .td4 {
-            width: 5%;
+        .tbl-item {
+            text-align: center;
+            margin: 24px 10px 10px;
         }
 
-        .td5 {
-            width: 35%;
+            .tbl-item a {
+                color: #FFF;
+            }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
         }
 
-        .fldtbl td img {
-            max-width: 100%;
+        .tbl-header {
+            background-color: rgba(255,255,255,0.3);
         }
-        .parent{float:left;position:relative;}
-        .left{width:50%;float:left;clear:left;}
-        .right {width:50%;float:left;clear:right;}
-    </style>
+
+        .tbl-content {
+            margin-top: 0;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        th {
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            text-align: left;
+            vertical-align: middle;
+            font-weight: 300;
+            font-size: 14px;
+            color: #fff;
+            border-bottom: solid 1px rgba(255,255,255,0.1);
+            line-height: 22px;
+            vertical-align: top;
+        }
+
+        body {
+            background: -webkit-linear-gradient(left,#d22542,#fab398);
+            background: linear-gradient(to right,#d22542,#fab398);
+            font-family: sans-serif;
+        }
+
+        section {
+            margin: 50px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        @media print {
+            #moderator-button {
+                display: none;
+            }
+        }
+        .hide{display:none;}
+        .td3 img {
+            max-width:100%;
+        }
+    </style>    
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="parent">
-            <div class="left">
-                <asp:Label ID="itemIdlbl" runat="server"></asp:Label><br />
-                <asp:Label ID="itemNamelbl" runat="server"></asp:Label><br />
-                <asp:Label ID="itemPathlbl" runat="server"></asp:Label>
-            </div>
-            <div class="right">
-                <button id="startModeration" title="Start Moderation" type="button" value="Moderate">Start Moderation</button>
-            </div>
-            <asp:Repeater ID="fieldRepeater" runat="server">
-                <HeaderTemplate>
-                    <table class="fldtbl">
-                        <tr>
-                            <th>Field</th>
-                            <th>FieldType</th>
-                            <th>FieldValue</th>
-                            <th>Review</th>
-                            <th>Result</th>
-                        </tr>
-                </HeaderTemplate>
-                <ItemTemplate>
+        <h1>Content Moderation Report <span>-</span>
+            <asp:Label ID="itemNamelbl" runat="server" /></h1>
+
+        <div class="tbl-item">
+            <button id="gotoitem" onclick="javascript:window.print()">Goto Sitecore Item</button>
+            <button id="startModeration">Moderate</button>
+            <button id="print" onclick="javascript:window.print()">Print</button></div>
+
+        <div class="tbl-header" style="padding-right: 6px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
                     <tr>
-                        <td class="td1"><%#Eval("Name") %>-<%#Eval("DisplayName") %></td>
-                        <td class="td2"><%#Eval("Type") %></td>
-                        <td class="td3"><%#Eval("Value") %></td>
-                        <td class="td4">Loading...</td>
-                        <td class="td5">Loading...</td>
+                        <th width="15%">Field Name</th>
+                        <th width="15%">Field Type</th>
+                        <th>Field Value</th>
                     </tr>
-                </ItemTemplate>
-                <FooterTemplate>
-                    </table>
-                </FooterTemplate>
-            </asp:Repeater>
+                </thead>
+            </table>
         </div>
+
+        <asp:Repeater ID="fieldRepeater" runat="server">
+            <HeaderTemplate>
+                <div class="tbl-content">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr class="itemRows">
+                    <td width="15%">
+                        <span><%#Eval("DisplayName") %></span>
+                        <span class="itemId hide"><%#Eval("ItemId") %></span>
+                        <span class="fieldName hide"><%#Eval("FieldName") %></span>
+                        <span class="isImg hide"><%#Eval("IsImage") %></span>
+                    </td>
+                    <td width="15%"><span class="dispName"><%#Eval("Type") %></span></td>
+                    <td class="td3">
+                        <span class="fieldVal"><%#Eval("Value") %></span>                        
+                        <span class="result"></span>
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                </tbody>
+                        </table>
+                    </div>
+            </FooterTemplate>
+        </asp:Repeater>
     </form>
     <script type="text/javascript">
         var $j = jQuery.noConflict();
         $j(document).ready(function () {
             $j('#startModeration').click(function () {
-                alert("Starting moderation!!");
+                $j('.itemRows').each(function (x, y) {
+                    var postData = { "ItemId": $j(this).find('.itemId').text(), "FieldName": $j(this).find('.fieldName').text(), "IsImage": $j(this).find('.isImg').text() };
+                    $j.ajax({
+                        type: "POST",
+                        url: "/sitecore/api/moderate/moderation/start",
+                        data: JSON.stringify(postData),
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (data, status) {
+                            //append status in the page
+                        },
+                        error: function (data, status) {
+                            alert(data);
+                        }
+                    });
+                })
+                return false;
             });
         });
     </script>

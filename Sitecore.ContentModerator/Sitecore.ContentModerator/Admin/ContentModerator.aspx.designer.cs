@@ -22,15 +22,6 @@ namespace Sitecore.ContentModerator.Admin {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// itemIdlbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label itemIdlbl;
-        
-        /// <summary>
         /// itemNamelbl control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace Sitecore.ContentModerator.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label itemNamelbl;
-        
-        /// <summary>
-        /// itemPathlbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label itemPathlbl;
         
         /// <summary>
         /// fieldRepeater control.

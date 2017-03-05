@@ -38,11 +38,13 @@
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <PackageExcludeCode>True</PackageExcludeCode>
     <AddDateTimeToPackageName>False</AddDateTimeToPackageName>
-    <SitecoreWebUrl>http://sitecorewizard</SitecoreWebUrl>
+    <SitecoreWebUrl>http://sitecorewizards</SitecoreWebUrl>
     <InstallSitecoreConnector>True</InstallSitecoreConnector>
     <DisableFileDeployment>False</DisableFileDeployment>
-    <SitecoreDeployFolder>C:\SitecoreWizard\Website</SitecoreDeployFolder>
+    <SitecoreDeployFolder>D:\Web\sitecorewizards\Website</SitecoreDeployFolder>
     <SitecoreAccessGuid>85dcabf7-34ec-47ea-a93d-9a4ba3206790</SitecoreAccessGuid>
+    <EnableValidations>False</EnableValidations>
+    <ValidationSettingsFilePath>.\TDS.Sitecore.ContentModerator.Core_Debug.xml</ValidationSettingsFilePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -66,41 +68,26 @@
   <ItemGroup>
     <SitecoreItem Include="sitecore\content.item">
       <ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization>
+      <ItemDeployment>AlwaysUpdate</ItemDeployment>
     </SitecoreItem>
     <SitecoreItem Include="sitecore\content\Applications.item">
+      <ItemDeployment>AlwaysUpdate</ItemDeployment>
       <ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization>
-      <ExcludeItemFrom>
-      </ExcludeItemFrom>
-      <ItemDeployment>
-      </ItemDeployment>
     </SitecoreItem>
     <SitecoreItem Include="sitecore\content\Applications\Content Editor.item">
+      <ItemDeployment>AlwaysUpdate</ItemDeployment>
       <ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization>
-      <ExcludeItemFrom>
-      </ExcludeItemFrom>
-      <ItemDeployment>
-      </ItemDeployment>
     </SitecoreItem>
     <SitecoreItem Include="sitecore\content\Applications\Content Editor\Context Menues.item">
+      <ItemDeployment>AlwaysUpdate</ItemDeployment>
       <ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization>
-      <ExcludeItemFrom>
-      </ExcludeItemFrom>
-      <ItemDeployment>
-      </ItemDeployment>
     </SitecoreItem>
     <SitecoreItem Include="sitecore\content\Applications\Content Editor\Context Menues\Default.item">
+      <ItemDeployment>AlwaysUpdate</ItemDeployment>
       <ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization>
-      <ExcludeItemFrom>
-      </ExcludeItemFrom>
-      <ItemDeployment>
-      </ItemDeployment>
     </SitecoreItem>
     <SitecoreItem Include="sitecore\content\Applications\Content Editor\Context Menues\Default\Moderate.item">
-      <ChildItemSynchronization>NoChildSynchronization</ChildItemSynchronization>
-      <ExcludeItemFrom>
-      </ExcludeItemFrom>
-      <ItemDeployment>
-      </ItemDeployment>
+      <ItemDeployment>AlwaysUpdate</ItemDeployment>
     </SitecoreItem>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />

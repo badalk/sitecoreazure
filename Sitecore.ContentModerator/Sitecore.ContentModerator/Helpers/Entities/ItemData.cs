@@ -3,6 +3,9 @@ namespace Sitecore.ContentModerator.Helpers.Entities
 {
     public class ItemData
     {
+        public string FieldName { get; set; }
+        public bool IsImage { get; set; }
+        public string ItemId { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
         public string Type { get; set; }
@@ -17,5 +20,5 @@ namespace Sitecore.ContentModerator.Helpers.Entities
         LookUpField = 2,
         MultilistField = 3,
         Image = 4
-    }
+    }   
 }
